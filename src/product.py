@@ -10,11 +10,17 @@ class Product:
         self.price = price
         self.quantity = quantity
 
-
-if __name__ == "__main__":  # pragma: no cover
-    pr1 = Product("Сыр", "Молочный продукт", 205.0, 10)
-
-    print(pr1.name)
-    print(pr1.description)
-    print(pr1.price)
-    print(pr1.quantity)
+    @classmethod
+    def new_product(cls, new_product: dict, products_list: list=None):
+        if list(new_product.keys()) == ["name", "description", "price", "quantity"]:
+            name, description, price, quantity = new_product.values()
+            if products_list:
+                for product in products_list:
+                    if product.name == name:
+                        product.quantity += quantity
+                        if product.price < price:
+                            product.price = price
+                        return product
+            return cls(name, description, price, quantity)
+        else:
+            raise ValueError("Входные данные не корректны")
