@@ -26,10 +26,10 @@ if __name__ == "__main__":
     print(new_product.price)
     print(new_product.quantity)
 
-    # new_product.price = 800
-    # print(new_product.price)
-    #
-    # new_product.price = -100
-    # print(new_product.price)
-    # new_product.price = 0
-    # print(new_product.price)
+    new_product.price = 800
+    print(new_product.price)
+
+    new_product.price = -100
+    print(new_product.price)
+    new_product.price = 0
+    print(new_product.price)
