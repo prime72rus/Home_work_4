@@ -57,12 +57,15 @@ def test_read_from_json_malformed_json(mock_file, mock_getsize, mock_isfile):
     mock_getsize.assert_called_once_with("malformed_json.json")
     mock_file.assert_called_once_with("malformed_json.json", encoding="utf-8")
 
+
 def test_create_object_from_dict(data_from_json):
     result = create_object_from_dict(data_from_json)
     assert result[0].name == "Смартфоны"
-    assert (result[0].description ==
-            "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни")
-    assert len(result[0].products) == 1
+    assert (
+        result[0].description
+        == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
+    )
+    assert result[0].products == "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
 
 
 def test_create_object_from_dict_empty_data():
