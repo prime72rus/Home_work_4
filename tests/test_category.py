@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category_init(bakery_category, milky_category):
     assert bakery_category.name == "Хлебобулочные изделия"
     assert bakery_category.description == "Хлеб и выпечка"
@@ -16,3 +19,8 @@ def test_category_init(bakery_category, milky_category):
 def test_add_product(milky_category, milky_product_2):
     milky_category.add_product(milky_product_2)
     assert milky_category.category_count == 3
+
+
+def test_add_product_error(milky_category, add_new_product):
+    with pytest.raises(ValueError, match="Входные данные не корректны"):
+        milky_category.add_product(add_new_product)
