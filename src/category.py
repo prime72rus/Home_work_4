@@ -27,7 +27,7 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            raise ValueError("Входные данные не корректны")
+            raise TypeError("Входные данные не корректны")
 
     @property
     def products(self):
