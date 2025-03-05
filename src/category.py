@@ -36,7 +36,6 @@ class Category:
             products_str += f"{str(product)}\n"
         return products_str
 
-
     @property
     def products_in_list(self):
         products_list = []
