@@ -24,3 +24,11 @@ def test_add_product(milky_category, milky_product_2):
 def test_add_product_error(milky_category, add_new_product):
     with pytest.raises(ValueError, match="Входные данные не корректны"):
         milky_category.add_product(add_new_product)
+
+
+def test_category_method_str(milky_category):
+    assert str(milky_category) == "Молочные продукты, количество продуктов: 22 шт."
+
+
+def test_category_method_products_in_list(milky_category):
+    assert milky_category.products_in_list[0].name == "Сыр"

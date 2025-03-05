@@ -41,5 +41,5 @@ class Category:
     def products_in_list(self):
         products_list = []
         for product in self.__products:
-            products_list.append(str(product))
+            products_list.append(product)
         return products_list

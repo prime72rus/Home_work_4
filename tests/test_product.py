@@ -62,3 +62,12 @@ def test_price_no_confirm(monkeypatch, capsys, product_1):
 def test_price_3(product_1):
     product_1.price = 220000.0
     assert product_1.price == 220000.0
+
+
+def test_product_method_add(milky_product_1, milky_product_2):
+    assert milky_product_1 + milky_product_2 == 3754.0
+
+
+def test_product_method_add_error(milky_product_1, error_class_product_1):
+    with pytest.raises(ValueError, match="Входные данные не корректны"):
+        result = milky_product_1 + error_class_product_1
