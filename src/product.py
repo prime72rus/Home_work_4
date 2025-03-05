@@ -10,6 +10,15 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError("Входные данные не корректны")
+
     @classmethod
     def new_product(cls, new_product: dict, products_list: list = None):
         if list(new_product.keys()) == ["name", "description", "price", "quantity"]:

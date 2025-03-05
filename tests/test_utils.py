@@ -1,7 +1,6 @@
 from unittest.mock import mock_open, patch
 
-from src.utils import read_from_json, create_object_from_dict
-
+from src.utils import create_object_from_dict, read_from_json
 
 mocked_valid_json_content = '[{"id": 1, "amount": 100}, {"id": 2, "amount": 200}]'
 mocked_invalid_json_content = '{"key": "value"}'

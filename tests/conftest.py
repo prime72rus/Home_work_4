@@ -1,7 +1,8 @@
 import pytest
 
-from src.product import Product
 from src.category import Category
+from src.product import Product
+from src.products_iterator import ProductsIterator
 
 
 @pytest.fixture
@@ -93,3 +94,13 @@ def add_new_product_price():
         "price": 200000.0,
         "quantity": 5,
     }
+
+
+@pytest.fixture
+def error_class_product_1():
+    return []
+
+
+@pytest.fixture
+def products_iterator(milky_category):
+    return ProductsIterator(milky_category)
