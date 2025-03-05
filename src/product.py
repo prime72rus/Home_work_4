@@ -1,7 +1,7 @@
 class Product:
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
@@ -13,6 +13,14 @@ class Product:
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+
+    def __add__(self, other):
+        if isinstance(other, Product):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise ValueError("Входные данные не корректны")
+
 
     @classmethod
     def new_product(cls, new_product: dict, products_list: list = None):
