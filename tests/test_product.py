@@ -25,7 +25,7 @@ def test_new_product_2(add_new_product, product_list):
 
 
 def test_new_product_3(add_new_product_error):
-    with pytest.raises(ValueError, match="Входные данные не корректны"):
+    with pytest.raises(TypeError, match="Входные данные не корректны"):
         Product.new_product(add_new_product_error)
 
 

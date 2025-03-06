@@ -22,7 +22,7 @@ def test_add_product(milky_category, milky_product_2):
 
 
 def test_add_product_error(milky_category, add_new_product):
-    with pytest.raises(ValueError, match="Входные данные не корректны"):
+    with pytest.raises(TypeError, match="Входные данные не корректны"):
         milky_category.add_product(add_new_product)
 
 
