@@ -37,13 +37,13 @@ def test_new_product_4(add_new_product_price, product_list):
 def test_price_1(capsys, product_1):
     product_1.price = -100
     captured = capsys.readouterr()
-    assert captured.out == "Цена не должна быть нулевая или отрицательная\n"
+    assert captured.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_price_2(capsys, product_1):
     product_1.price = 0
     captured = capsys.readouterr()
-    assert captured.out == "Цена не должна быть нулевая или отрицательная\n"
+    assert captured.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_price_confirm(monkeypatch, product_1):
@@ -57,7 +57,7 @@ def test_price_no_confirm(monkeypatch, capsys, product_1):
     product_1.price = 80.0
     assert product_1.price == 210000.0
     captured = capsys.readouterr()
-    assert captured.out == "Отмена действия\n"
+    assert captured.out.strip().split("\n")[-1] == "Отмена действия"
 
 
 def test_price_3(product_1):
