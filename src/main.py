@@ -1,4 +1,5 @@
 from src.category import Category  # pragma: no cover
+from src.order import Order  # pragma: no cover
 from src.product import Product  # pragma: no cover
 
 
@@ -48,6 +49,9 @@ def main():  # pragma: no cover
 
     print(Category.category_count)
     print(Category.product_count)
+
+    order_1 = Order(product1, 3)
+    order_1.print_info()
 
 
 if __name__ == "__main__":  # pragma: no cover

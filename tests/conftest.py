@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.lawngrass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.products_iterator import ProductsIterator
 from src.smartphone import Smartphone
