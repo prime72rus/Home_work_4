@@ -32,3 +32,9 @@ def test_category_method_str(milky_category):
 
 def test_category_method_products_in_list(milky_category):
     assert milky_category.products_in_list[0].name == "Сыр"
+
+def test_print_info(capsys, milky_category):
+    milky_category.print_info()
+    message = capsys.readouterr()
+    assert (message.out.strip().split("\n")[-1] ==
+            "Категория: Молочные продукты, описание категории: Молоко и его производные")

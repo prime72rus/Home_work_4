@@ -1,7 +1,8 @@
+from src.base_product import BaseOrderCategory
 from src.product import Product
 
 
-class Category:
+class Category(BaseOrderCategory):
     name: str
     description: str
     products: list
@@ -21,6 +22,9 @@ class Category:
             for product in self.__products:
                 sum_quantity += product.quantity
         return f"{self.name}, количество продуктов: {sum_quantity} шт."
+
+    def print_info(self):
+        print(f"Категория: {self.name}, описание категории: {self.description}")
 
     def add_product(self, product: Product):
         if isinstance(product, Product):
