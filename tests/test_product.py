@@ -77,5 +77,5 @@ def test_product_method_add_error(milky_product_1, error_class_product_1):
 
 def test_product_method_add_zero_quantity():
     with pytest.raises(
-            ZeroProductQuantity, match="Товар с нулевым или отрицательным количеством не может быть добавлен"):
+            ValueError, match="Товар с нулевым количеством не может быть добавлен"):
         Product("Молоко", "Молочный продукт", 142.0, 0)

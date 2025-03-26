@@ -1,5 +1,4 @@
 from src.base_product import BaseProduct
-from src.exceptions import ZeroProductQuantity
 from src.print_mixin import PrintMixin
 
 
@@ -16,7 +15,7 @@ class Product(BaseProduct, PrintMixin):
         if quantity > 0:
             self.quantity = quantity
         else:
-            raise ZeroProductQuantity("Товар с нулевым или отрицательным количеством не может быть добавлен")
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         super().__init__()
 
     def __str__(self):
