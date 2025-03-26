@@ -2,6 +2,7 @@ from src.base_product import BaseOrderCategory
 from src.product import Product
 
 
+
 class Category(BaseOrderCategory):
     name: str
     description: str
