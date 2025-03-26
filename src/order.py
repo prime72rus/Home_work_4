@@ -1,6 +1,6 @@
 from src.base_product import BaseOrderCategory
-from src.product import Product
 from src.exceptions import ZeroProductQuantity
+from src.product import Product
 
 
 class Order(BaseOrderCategory):
@@ -21,7 +21,6 @@ class Order(BaseOrderCategory):
             print("Продукт добавлен в заказ")
         finally:
             print("Обработка добавления продукта завершена")
-
 
     def print_info(self):
         print(f"Товар: {self.name}, количество: {self.quantity} шт., итоговая цена: {self.total_amount} руб.")

@@ -1,6 +1,6 @@
 from src.base_product import BaseProduct
-from src.print_mixin import PrintMixin
 from src.exceptions import ZeroProductQuantity
+from src.print_mixin import PrintMixin
 
 
 class Product(BaseProduct, PrintMixin):

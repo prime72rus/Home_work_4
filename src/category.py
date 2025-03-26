@@ -1,6 +1,6 @@
 from src.base_product import BaseOrderCategory
-from src.product import Product
 from src.exceptions import ZeroProductQuantity
+from src.product import Product
 
 
 class Category(BaseOrderCategory):
@@ -57,11 +57,8 @@ class Category(BaseOrderCategory):
             products_list.append(product)
         return products_list
 
-
     def middle_price(self):
         try:
             return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
         except ZeroDivisionError:
             return 0
-
-
