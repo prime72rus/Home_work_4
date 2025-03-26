@@ -72,3 +72,8 @@ def test_product_method_add(milky_product_1, milky_product_2):
 def test_product_method_add_error(milky_product_1, error_class_product_1):
     with pytest.raises(TypeError, match="Входные данные не корректны"):
         result = milky_product_1 + error_class_product_1
+
+
+def test_product_method_add_zero_price():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Молоко", "Молочный продукт", 142.0, 0)
