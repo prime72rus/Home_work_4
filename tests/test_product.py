@@ -2,6 +2,7 @@ import pytest
 
 from src.product import Product
 from tests.conftest import add_new_product
+from src.exceptions import ZeroProductQuantity
 
 
 def test_product_init(milky_product_1):
@@ -72,3 +73,9 @@ def test_product_method_add(milky_product_1, milky_product_2):
 def test_product_method_add_error(milky_product_1, error_class_product_1):
     with pytest.raises(TypeError, match="Входные данные не корректны"):
         result = milky_product_1 + error_class_product_1
+
+
+def test_product_method_add_zero_quantity():
+    with pytest.raises(
+            ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Молоко", "Молочный продукт", 142.0, 0)

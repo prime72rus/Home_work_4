@@ -1,4 +1,5 @@
 from src.base_product import BaseOrderCategory
+from src.exceptions import ZeroProductQuantity
 from src.product import Product
 
 
@@ -28,8 +29,17 @@ class Category(BaseOrderCategory):
 
     def add_product(self, product: Product):
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            try:
+                if product.quantity <= 0:
+                    raise ZeroProductQuantity("Товар с нулевым или отрицательным количеством не может быть добавлен")
+            except ZeroProductQuantity as e:
+                print(str(e))
+            else:
+                self.__products.append(product)
+                Category.product_count += 1
+                print("Продукт добавлен в список категории")
+            finally:
+                print("Обработка добавления продукта завершена")
         else:
             raise TypeError("Входные данные не корректны")
 
@@ -46,3 +56,9 @@ class Category(BaseOrderCategory):
         for product in self.__products:
             products_list.append(product)
         return products_list
+
+    def middle_price(self):
+        try:
+            return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0

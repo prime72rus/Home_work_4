@@ -17,6 +17,9 @@ def milky_product_1():
 def milky_product_2():
     return Product("Молоко", "Молочный продукт", 142.0, 12)
 
+@pytest.fixture
+def milky_product_zero_quantity():
+    return Product("Молоко", "Молочный продукт", 142.0, 12)
 
 @pytest.fixture
 def bakery_product_1():
@@ -32,6 +35,9 @@ def bakery_product_2():
 def milky_category(milky_product_1, milky_product_2):
     return Category("Молочные продукты", "Молоко и его производные", [milky_product_1, milky_product_2])
 
+@pytest.fixture
+def milky_category_empty_product_list():
+    return Category("Молочные продукты", "Молоко и его производные", [])
 
 @pytest.fixture
 def bakery_category(bakery_product_1, bakery_product_2):
