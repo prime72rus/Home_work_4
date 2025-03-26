@@ -1,3 +1,3 @@
 class ZeroProductQuantity(Exception):
     def __init__(self, message=None):
-        super.__init__(message)
+        super().__init__(message)

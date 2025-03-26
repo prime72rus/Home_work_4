@@ -10,7 +10,7 @@ class Order(BaseOrderCategory):
 
     def __init__(self, product: Product, quantity: int) -> None:
         try:
-            if product.quantity <= 0 or quantity <= 0:
+            if quantity <= 0:
                 raise ZeroProductQuantity("Товар с нулевым или отрицательным количеством не может быть добавлен")
         except ZeroProductQuantity as e:
             print(str(e))

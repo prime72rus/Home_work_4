@@ -1,6 +1,7 @@
 from src.category import Category  # pragma: no cover
 from src.order import Order  # pragma: no cover
 from src.product import Product  # pragma: no cover
+from src.exceptions import ZeroProductQuantity
 
 
 def main():  # pragma: no cover
@@ -35,7 +36,7 @@ def main():  # pragma: no cover
     # print(category1.category_count)
     # print(category1.product_count)
     #
-    # product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 5)
     # category2 = Category(
     #     "Телевизоры",
     #     "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
@@ -50,15 +51,15 @@ def main():  # pragma: no cover
     # print(Category.category_count)
     # print(Category.product_count)
     #
-    # order_1 = Order(product1, 3)
+    # order_1 = Order(product1, 0)
     # order_1.print_info()
     try:
         product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
-    except ValueError as e:
+    except ZeroProductQuantity as e:
         print(
-            "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с нулевым количеством")
+            "Возникла ошибка ZeroProductQuantity прерывающая работу программы при попытке добавить продукт с нулевым количеством")
     else:
-        print("Не возникла ошибка ValueError при попытке добавить продукт с нулевым количеством")
+        print("Не возникла ошибка ZeroProductQuantity при попытке добавить продукт с нулевым количеством")
 
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
@@ -70,6 +71,7 @@ def main():  # pragma: no cover
 
     category_empty = Category("Пустая категория", "Категория без продуктов", [])
     print(category_empty.middle_price())
+
 
 if __name__ == "__main__":  # pragma: no cover
     main()

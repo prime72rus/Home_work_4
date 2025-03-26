@@ -1,5 +1,8 @@
 import pytest
 
+from src.exceptions import ZeroProductQuantity
+from src.product import Product
+
 
 def test_category_init(bakery_category, milky_category):
     assert bakery_category.name == "Хлебобулочные изделия"
@@ -41,5 +44,18 @@ def test_print_info(capsys, milky_category):
             "Категория: Молочные продукты, описание категории: Молоко и его производные")
 
 
-def test_category_middle_price(milky_category_empty_product_list):
+def test_category_middle_price(milky_category, milky_category_empty_product_list):
+    assert milky_category.middle_price() == 173.5
     assert milky_category_empty_product_list.middle_price() == 0
+
+
+def test_category_add_product_error(capsys, milky_category):
+    product_1 = Product("Молоко", "Молочный продукт", 142.0, 12)
+    product_1.quantity = 0
+    milky_category.add_product(product_1)
+    captured = capsys.readouterr()
+    assert captured.out == ("Product(Сыр, Молочный продукт, 205.0, 10)\n"
+                            "Product(Молоко, Молочный продукт, 142.0, 12)\n"
+                            "Product(Молоко, Молочный продукт, 142.0, 12)\n"
+                            "Товар с нулевым или отрицательным количеством не может быть добавлен\n"
+                            "Обработка добавления продукта завершена\n")

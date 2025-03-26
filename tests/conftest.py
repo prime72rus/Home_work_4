@@ -18,7 +18,7 @@ def milky_product_2():
     return Product("Молоко", "Молочный продукт", 142.0, 12)
 
 @pytest.fixture
-def milky_product_zero_price():
+def milky_product_zero_quantity():
     return Product("Молоко", "Молочный продукт", 142.0, 12)
 
 @pytest.fixture
